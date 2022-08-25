@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 
 public class ProductRepositoryTest {
     private ProductRepository repository = new ProductRepository();
-    private Book oneBook = new Book(1,"One", 1150, "Don");
-    private Book secondBook = new Book(2, "Two", 450, "Yar" );
 
+    private final Book firstBook = new Book(1, "Wood", 450, "Sting");
+    private final Book secondBook = new Book(2, "Folder", 857, "Sten");
     @Test
     public void shouldRemoveByID() {
-        repository.save(oneBook);
+        repository.save(firstBook);
         repository.save(secondBook);
         Product[] expected = new Product[]{secondBook};
         repository.removeById(1);

@@ -13,10 +13,6 @@ public class ProductRepository {
         product = tmp;
     }
 
-    public Product[] findAll() {
-        return product;
-    }
-
     public void removeById(int id) {
         int length = product.length - 1;
         Product[] tmp = new Product[length];
@@ -28,5 +24,9 @@ public class ProductRepository {
             }
         }
         product = tmp;
+    }
+
+    public Product[] findAll() {
+        return product;
     }
 }
