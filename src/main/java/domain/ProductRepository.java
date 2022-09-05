@@ -2,31 +2,38 @@ package domain;
 
 public class ProductRepository {
 
-    private Product[] product = new Product[0];
+    private Product[] items = new Product[0];
 
     public void save(Product item) {
-        int length = product.length + 1;
+        int length = items.length + 1;
         Product[] tmp = new Product[length];
-        System.arraycopy(product, 0, tmp, 0, product.length);
+        System.arraycopy(items, 0, tmp, 0, items.length);
         int lastIndex = tmp.length - 1;
         tmp[lastIndex] = item;
-        product = tmp;
+        items = tmp;
     }
 
     public void removeById(int id) {
-        int length = product.length - 1;
+        int length = items.length - 1;
         Product[] tmp = new Product[length];
         int index = 0;
-        for (Product item : product) {
+        for (Product item : items) {
             if (item.getId() != id) {
                 tmp[index] = item;
                 index++;
             }
         }
-        product = tmp;
+        items = tmp;
     }
-
+    public Product[] getItem() {
+        Product[] result = new Product[items.length];
+        for (int i = 0; i < result.length; i++) {
+            int index = items.length - i - 1;
+            result[i] = items[index];
+        }
+        return result;
+    }
     public Product[] findAll() {
-        return product;
+        return items;
     }
 }
